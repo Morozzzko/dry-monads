@@ -59,6 +59,10 @@ module Dry
         Result
       end
 
+      def deconstruct
+        [@value]
+      end
+
       # Represents a value of a successful operation.
       #
       # @api public

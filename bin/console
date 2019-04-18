@@ -11,6 +11,17 @@ M = Dry::Monads
 # (If you use this, don't forget to add pry to your Gemfile!)
 require 'pry'
 
+def match(value)
+  case value
+  in M::Success(1) then :one
+  in M::Success(2 | 3) then :two_or_three
+  in M::Success(4..10) then :four_to_ten
+  in M::Success(a) then a
+  in M::Failure([:not_ok, e]) then e
+  in M::Failure(e) then e
+  end
+end
+
 binding.pry
 
 p
